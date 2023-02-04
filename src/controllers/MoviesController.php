@@ -3,16 +3,9 @@
 namespace App\controllers;
 
 use App\Recibir;
-use Throwable;
-use App\services\impl\MoviesService;
-use App\services\IMoviesService;
 use App\factories\MoviesFactory;
 use App\response\HTTPResponse;
-use App\DTO\MovieDTO;
 use App\validator\impl\Validator;
-use App\validator\IValidator;
-use App\services\impl\ActoresService;
-use App\services\IActoresService;
 use App\factories\ActoresFactory;
 
 class MoviesController {
@@ -70,6 +63,8 @@ class MoviesController {
             HTTPResponse::json($e->getCode(), $e->getMessage());
         }
     }
+
+  
 }
 
 ?>

@@ -21,6 +21,7 @@ $router->get('/peliculas/(\d+)/actores', 'controllers\MoviesController@allActore
 $router->post('/peliculas', 'controllers\MoviesController@insert');
 $router->delete('/peliculas/(\d+)', 'controllers\MoviesController@delete');
 $router->put('/peliculas/(\d+)', 'controllers\MoviesController@update');
+$router->post('peliculas/users', 'controllers\MoviesController@user');
 $router->set404(function() { HTTPResponse::json(404,'Página no encontrada');});
 
 $router->run();
