@@ -2,6 +2,7 @@
 
 namespace App\controllers;
 
+use App\Recibir;
 use Throwable;
 use App\services\impl\MoviesService;
 use App\services\IMoviesService;
@@ -45,6 +46,7 @@ class MoviesController {
         try {
             $data = json_decode(file_get_contents('php://input'), true);
             Validator::validadorCamposCreate($data);
+            Recibir::getting();
         } catch (\Exception $e) {
             HTTPResponse::json($e->getCode(), $e->getMessage());
         }
