@@ -39,7 +39,7 @@ class MoviesController {
         try {
             $data = json_decode(file_get_contents('php://input'), true);
             Validator::validadorCamposCreate($data);
-            Recibir::getting();
+            //ecibir::getting();
         } catch (\Exception $e) {
             HTTPResponse::json($e->getCode(), $e->getMessage());
         }

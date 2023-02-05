@@ -8,4 +8,6 @@ interface IValidator {
 
     public static function validadorCamposUpdate(int $id, array $movie);
 
+    public static function validadorCamposUsuarioNuevo(array $user);
+
     }

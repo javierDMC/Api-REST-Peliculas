@@ -4,6 +4,8 @@ namespace App\validator\impl;
 
 use App\db\orm\DB;
 use App\DAO\impl\MoviesDBDAO;
+use App\DTO\UserDTO;
+use App\factories\UserFactory;
 use App\validator\IValidator;
 use App\DTO;
 use App\services\impl\MoviesService;
@@ -42,4 +44,22 @@ class Validator implements IValidator{
         $movie = new MovieDTO(null, $movie['titulo'], $movie['anyo'], $movie['duracion']);
         return $movie;
     }
+
+    public static function nuevoUsuario(array $user): UserDTO{
+        $user = new UserDTO(null, $user['usuario'], $user['password'], $user['admin']);
+        return $user;
+    }
+
+
+    public static function validadorCamposUsuarioNuevo(array $user){
+        if(isset($user['usuario'], $user['password'], $user['admin'])){
+            $usuario = self::nuevoUsuario($user);
+            UserFactory::getService()::register($usuario);
+            HTTPResponse::json(201, "Usuario registrado con éxito");
+        }else{
+            throw new \Exception("Bad request", 400);
+        }
+        
+    }
+
 }
