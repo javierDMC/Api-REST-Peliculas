@@ -10,4 +10,6 @@ interface IValidator {
 
     public static function validadorCamposUsuarioNuevo(array $user);
 
+    public static function validadorCamposUsuario(array $user);
+
     }

@@ -50,6 +50,11 @@ class Validator implements IValidator{
         return $user;
     }
 
+    public static function loginUsuario(array $user): UserDTO{
+        $user = new UserDTO(null, $user['usuario'], $user['password'], null);
+        return $user;
+    }
+
 
     public static function validadorCamposUsuarioNuevo(array $user){
         if(isset($user['usuario'], $user['password'], $user['admin'])){
@@ -58,6 +63,16 @@ class Validator implements IValidator{
             HTTPResponse::json(201, "Usuario registrado con éxito");
         }else{
             throw new \Exception("Bad request", 400);
+        }
+        
+    }
+
+    public static function validadorCamposUsuario(array $user){
+        if(isset($user['usuario'], $user['password'])){
+            $usuario = self::loginUsuario($user);
+            UserFactory::getService()::login($usuario);
+        }else{
+            throw new \Exception("Acceso denegado", 400);
         }
         
     }

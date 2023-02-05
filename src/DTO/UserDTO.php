@@ -14,7 +14,7 @@ class UserDTO implements JsonSerializable
     * @param $admin bool
     */
 
-   function __construct(private ?int $id, private string $usuario, private string $password, private bool $admin)
+   function __construct(private ?int $id, private string $usuario, private string $password, private ?bool $admin)
    {
       $this->id = $id;
       $this->usuario = $usuario;
@@ -42,10 +42,14 @@ class UserDTO implements JsonSerializable
    /**
     * @return string
     */
-   public function password(): string
+   public function insertPassword(): string
    {
       $password = password_hash($this->password, PASSWORD_DEFAULT, ['cost' => 10]);
       return $password;
+   }
+
+   public function password():string{
+      return $this->password;
    }
 
    /**

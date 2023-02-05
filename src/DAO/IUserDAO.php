@@ -11,5 +11,7 @@ interface IUserDAO{
 
     public static function read(): array;
 
+    public static function login(UserDTO $user): bool;
+
     
 }

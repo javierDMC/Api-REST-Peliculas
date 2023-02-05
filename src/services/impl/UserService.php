@@ -18,4 +18,8 @@ class UserService implements IUserService{
         return UserFactory::getDAO()->read();
     }
 
+    public static function login(UserDTO $user): bool{
+        return UserFactory::getDAO()->login($user);
+    }
+
 }

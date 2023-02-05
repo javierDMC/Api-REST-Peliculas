@@ -27,10 +27,12 @@ class UserController {
     }
 
     public function login(){
-        echo ("Usuario login controller");
-        // try{
-        //     HTTPResponse::json(200, UserFactory::getService()->login($id))
-        // }
+        try{
+            $data = json_decode(file_get_contents('php://input'), true);
+            Validator::validadorCamposUsuario($data);
+        }catch (\Exception $e){
+            HTTPResponse::json($e->getCode(), $e->getMessage());
+        }
     }
 
     public function users(){
