@@ -13,5 +13,7 @@ interface IUserDAO{
 
     public static function login(UserDTO $user): bool;
 
+    public static function logout(int $id): bool;
+
     
 }

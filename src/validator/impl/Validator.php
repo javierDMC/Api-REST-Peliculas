@@ -46,12 +46,12 @@ class Validator implements IValidator{
     }
 
     public static function nuevoUsuario(array $user): UserDTO{
-        $user = new UserDTO(null, $user['usuario'], $user['password'], $user['admin']);
+        $user = new UserDTO(null, $user['usuario'], $user['password'], $user['admin'], $user['login']);
         return $user;
     }
 
     public static function loginUsuario(array $user): UserDTO{
-        $user = new UserDTO(null, $user['usuario'], $user['password'], null);
+        $user = new UserDTO(null, $user['usuario'], $user['password'], null, null);
         return $user;
     }
 

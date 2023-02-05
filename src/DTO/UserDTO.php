@@ -12,14 +12,16 @@ class UserDTO implements JsonSerializable
     * @param $usuario string
     * @param $password string
     * @param $admin bool
+    * @param $login bool
     */
 
-   function __construct(private ?int $id, private string $usuario, private string $password, private ?bool $admin)
+   function __construct(private ?int $id, private string $usuario, private string $password, private ?bool $admin, private ?bool $login)
    {
       $this->id = $id;
       $this->usuario = $usuario;
       $this->password = $password;
       $this->admin = $admin;
+      $this->login = $login;
 
    }
 
@@ -60,6 +62,10 @@ class UserDTO implements JsonSerializable
       return $this->admin;
    }
 
+   public function login():bool{
+      return $this->login;
+   }
+
    /**
      * Specify data which should be serialized to JSON
      * Serializes the object to a value that can be serialized natively by json_encode().
@@ -71,7 +77,8 @@ class UserDTO implements JsonSerializable
           'id' => $this->id,
           'usuario' => $this->usuario,
           'password' => $this->password,
-          'admin' => $this->admin
+          'admin' => $this->admin,
+          'login' => $this->login
       ];      
   }
 }

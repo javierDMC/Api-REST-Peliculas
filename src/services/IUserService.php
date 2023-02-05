@@ -13,4 +13,6 @@ interface IUserService {
 
     public static function login(UserDTO $user): bool;
 
+    public static function logout(int $id): bool;
+
 }

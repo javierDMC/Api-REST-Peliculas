@@ -25,6 +25,7 @@ $router->post('/peliculas/login/register', 'controllers\UserController@register'
 $router->delete('/peliculas/login/delete/(\d+)', 'controllers\UserController@delete');
 $router->get('/peliculas/login/users', 'controllers\UserController@users');
 $router->post('/peliculas/login', 'controllers\UserController@login');
+$router->post('/peliculas/logout/(\d+)', 'controllers\UserController@logout');
 $router->set404(function() { HTTPResponse::json(404,'Página no encontrada');});
 
 $router->run();

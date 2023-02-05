@@ -26,6 +26,10 @@ class UserController {
         }
     }
 
+    public function users(){
+        HTTPResponse::json(200, UserFactory::getService()->read());
+    }
+
     public function login(){
         try{
             $data = json_decode(file_get_contents('php://input'), true);
@@ -35,7 +39,13 @@ class UserController {
         }
     }
 
-    public function users(){
-        HTTPResponse::json(200, UserFactory::getService()->read());
+    public function logout($id){
+        try{
+            UserFactory::getService()::logout($id);
+        }catch(\Exception $e){
+            HTTPResponse::json($e->getCode(), $e->getMessage());
+        }
     }
+
+    
 }

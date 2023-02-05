@@ -10,7 +10,8 @@ class UserDBDAO implements IUserDAO{
     static function register(UserDTO $user):bool{
         return DB::table('usuarios')->insert(['usuario' => $user->usuario(),
                                               'password' => $user->insertPassword(),
-                                              'admin' => $user->admin()]);
+                                              'admin' => $user->admin(),
+                                              'login' => false]);
         
     }
 
@@ -27,20 +28,29 @@ class UserDBDAO implements IUserDAO{
                     $user->id,
                     $user->usuario,
                     $user->password,
-                    $user->admin
+                    $user->admin,
+                    $user->login
             );
         }
         return $result;
     }
 
     static function login(UserDTO $user):bool{
-        $passwordUsuario =  DB::table('usuarios')->select('password')->where('usuario', '=', $user->usuario())->getOne();
-        if(password_verify($user->password(),$passwordUsuario->password)){
+        $userDB =  DB::table('usuarios')->where('usuario', '=', $user->usuario())->getOne();
+        if(password_verify($user->password(),$userDB->password)){
+            DB::table('usuarios')->update($userDB->id, ['login'=>true]);
             echo "Login correcto";
             return true;
         }else {
             echo "Credenciales no correctas";
             return false;
         }
+    }
+
+    static function logout(int $id):bool{
+            DB::table('usuarios')->update($id, ['login'=>false]);
+            echo "Logout correcto";
+            return true;
+        
     }
 }

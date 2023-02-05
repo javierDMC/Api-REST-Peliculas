@@ -22,4 +22,8 @@ class UserService implements IUserService{
         return UserFactory::getDAO()->login($user);
     }
 
+    public static function logout(int $id):bool{
+        return UserFactory::getDAO()->logout($id);
+    }
+
 }
