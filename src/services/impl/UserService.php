@@ -9,4 +9,8 @@ class UserService implements IUserService{
     public static function register(UserDTO $user): bool{
         return UserFactory::getDAO()->register($user);
     }
+
+    public static function delete(int $id):bool{
+        return UserFactory::getDAO()->delete($id);
+    }
 }

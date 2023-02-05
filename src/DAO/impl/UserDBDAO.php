@@ -13,4 +13,11 @@ class UserDBDAO implements IUserDAO{
                                               'admin' => $user->admin()]);
         
     }
+
+    static function delete(int $id):bool {
+        $db_data = DB::table('usuarios')->delete($id);
+        return $db_data;
+    }
+
+    
 }
