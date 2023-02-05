@@ -44,7 +44,8 @@ class UserDTO implements JsonSerializable
     */
    public function password(): string
    {
-      return $this->password;
+      $password = password_hash($this->password, PASSWORD_DEFAULT, ['cost' => 10]);
+      return $password;
    }
 
    /**

@@ -1,7 +1,6 @@
 <?php
 namespace App\controllers;
 
-use App\DTO\UserDTO;
 use App\factories\UserFactory;
 use App\response\HTTPResponse;
 use App\validator\impl\Validator;
