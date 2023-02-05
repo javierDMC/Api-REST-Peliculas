@@ -23,6 +23,7 @@ $router->delete('/peliculas/(\d+)', 'controllers\MoviesController@delete');
 $router->put('/peliculas/(\d+)', 'controllers\MoviesController@update');
 $router->post('/peliculas/login/register', 'controllers\UserController@register');
 $router->delete('/peliculas/login/delete/(\d+)', 'controllers\UserController@delete');
+$router->get('/peliculas/login/users', 'controllers\UserController@users');
 $router->set404(function() { HTTPResponse::json(404,'Página no encontrada');});
 
 $router->run();

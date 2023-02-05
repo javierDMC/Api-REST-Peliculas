@@ -9,5 +9,7 @@ interface IUserDAO{
 
     public static function delete(int $id): bool;
 
+    public static function read(): array;
+
     
 }

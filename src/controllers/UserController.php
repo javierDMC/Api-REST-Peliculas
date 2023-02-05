@@ -33,7 +33,7 @@ class UserController {
         // }
     }
 
-    public function allUsers(){
-        HTTPResponse::json(200, UserFactory::getService()->all());
+    public function users(){
+        HTTPResponse::json(200, UserFactory::getService()->read());
     }
 }

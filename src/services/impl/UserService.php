@@ -13,4 +13,9 @@ class UserService implements IUserService{
     public static function delete(int $id):bool{
         return UserFactory::getDAO()->delete($id);
     }
+
+    public static function read(): array{
+        return UserFactory::getDAO()->read();
+    }
+
 }
